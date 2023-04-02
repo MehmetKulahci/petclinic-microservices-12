@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+   // environment {
+        //JAVA_HOME=sh(script:"echo $PATH:/usr/bin", returnStdout:true).trim()
+   // }
+
+    stages {
+        stage('Package Application') {
+            steps {
+                  sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=petclinic-test"
+            }
+        }
+    }
+
+}
